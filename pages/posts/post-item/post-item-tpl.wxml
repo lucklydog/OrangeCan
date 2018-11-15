@@ -1,0 +1,34 @@
+<!--代码是从post.xml的block模块中copy过来的-->
+
+
+<template name="postItemTpl">
+
+
+
+  <!-- 构建文章列表的骨架和样式 -->
+  <view class="post-container">
+    <view class="post-author-data">
+      <image src='{{avatar}}' />
+      <text>{{date}}</text>
+    </view>
+
+    <text class="post-title">{{title}}</text>
+    <!-- mode有四种缩放方式 ，9种剪切模式 
+  scaleToFill 不保持纵横比缩放图片，是图片的宽高完全拉伸至填满image元素
+  aspectFit 保持纵横比缩放图片，可以完整的将图片显示出来
+  aspectFill 只保证图片的短边能完全出来
+  widthFix 宽度不变高度自动变化，保持原图宽高比不变
+  -->
+    <image class="post-image" src='{{postImg}}' mode="aspectFill" />
+    <text class="post-content">{{content}}
+</text>
+    <view class="post-like">
+      <image src='/images/icon/wx_app_collect.png' />
+      <text>{{collectionNum}}</text>
+      <image src='/images/icon/wx_app_view.png' />
+      <text>{{readingNum}}</text>
+      <image src='/images/icon/wx_app_message.png' />
+      <text>{{commentNum}}</text>
+    </view>
+  </view>
+</template>
