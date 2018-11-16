@@ -1,7 +1,7 @@
 <!--pages/posts/posts.wxml-->
 
 <!-- 导入template模板,用的是相对路径-->
-<import src="post-item/post-item-tpl.wxml"/>
+<import src="post-item/post-item-tpl.wxml" />
 
 <view>
   <swiper vertical="{{false}}" indicator-dots='true' autoplay='true' interval='5000' circular='true'>
@@ -16,8 +16,10 @@
     </swiper-item>
   </swiper>
 
-  
+
   <block wx:for="{{postList}}" wx:for-item="item1" wx:for-index="idx">
-    <template is ="postItemTpl" data="{{...item1}}"/>
+    <view catchtap="onTapToDetail" data-post-id="{{item1.postId}}">
+      <template is="postItemTpl" data="{{...item1}}" />
+    </view>
   </block>
 </view>

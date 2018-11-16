@@ -1,8 +1,19 @@
 // pages/posts/posts.js
 //   var DBPost = require('../../db/DBPost.js').DBPost;//利用ES5版本
-import {DBPost} from '../../db/DBPostE.js'; //利用ES6版本
+import {
+  DBPost
+} from '../../db/DBPost.js'; //利用ES6版本
 Page({
-
+  /**
+   * post页面的点击跳转函数
+   */
+  onTapToDetail(event) {
+    var postId = event.currentTarget.dataset.postId;
+    console.log(postId);
+    wx.navigateTo({
+      url: 'post-detail/post-detail?id='+postId,
+    })
+  },
   /**
    * 页面的初始数据
    */
@@ -19,7 +30,7 @@ Page({
     */
     var dbPost = new DBPost();
     this.setData({
-      postList: dbPost.getAllPostData() 
+      postList: dbPost.getAllPostData()
     });
   },
 

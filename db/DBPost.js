@@ -1,20 +1,36 @@
-var DBPost = function(){
-  this.storageKeyName='postList';//所有的文章本地缓存存储键值
-}
-DBPost.prototype= {
-  getAllPostData:function(){
+//利用ES6的方式改写DBPost
+
+class DBPost {
+  constructor(postId) {
+    this.storageKeyName = 'postList';
+    this.postId = postId;
+  }
+  //得到全部文章信息
+  getAllPostData() {
     var res = wx.getStorageSync(this.storageKeyName);
-    if(!res){
-      res=require('../data/data.js').postList;
-      this.execSetStorageSync(res);
+    if (!res) {
+      res = require('../data/totalData.js').postList;
+      this.initPostList(res);
     }
     return res;
-  },
-  //本地缓存，保存、更新
-  execSetStorageSync:function(data){
-    wx.setStorageSync(this.storageKeyName,data);//同步方式设置初始数据
-  },
+  }
+  execSetStorageSync(data) {
+    wx.setStorageSync(this.storageKeyName, data);
+  }
+  getPostItemById() {
+    var postsData = this.getAllPostData();
+    var len = postsData.length;
+    for (var i = 0; i < len; i++) {
+      if(postsData[i].postId == this.postId){
+        return{
+          index:i,
+          data:postsData[i]
+        }
+      }
+    }
+  }
 };
-module.exports={
-  DBPost:DBPost
-};
+
+export {
+  DBPost
+}
