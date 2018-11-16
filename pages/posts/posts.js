@@ -1,5 +1,6 @@
 // pages/posts/posts.js
-var dataObj = require("../../data/data.js");
+//   var DBPost = require('../../db/DBPost.js').DBPost;//利用ES5版本
+import {DBPost} from '../../db/DBPostE.js'; //利用ES6版本
 Page({
 
   /**
@@ -16,10 +17,10 @@ Page({
     /*setData方法位于Page对象的原型链上：Page.prototype.setData
     setData会改变this.data变量里相同key的值
     */
-    
+    var dbPost = new DBPost();
     this.setData({
-      postList: dataObj.postList //暴露key为postData,value为postData
-    })
+      postList: dbPost.getAllPostData() 
+    });
   },
 
   /**
