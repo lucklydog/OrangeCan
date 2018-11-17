@@ -21,14 +21,57 @@ class DBPost {
     var postsData = this.getAllPostData();
     var len = postsData.length;
     for (var i = 0; i < len; i++) {
-      if(postsData[i].postId == this.postId){
-        return{
-          index:i,
-          data:postsData[i]
+      if (postsData[i].postId == this.postId) {
+        return {
+          index: i,
+          data: postsData[i]
         }
       }
     }
   }
+  //实现收藏操作
+  collect() {
+    return this.updatePostData('collect');
+  }
+  //点赞或者取消点赞
+  up() {
+    var data = this.updatePostData('up');
+    return data;
+  }
+  updatePostData(category) {
+    var itemData = this.getPostItemById(),
+      postData = itemData.data,
+      allPostData = this.getAllPostData();
+    switch (category) {
+      case 'collect':
+        if (!postData.collectionStatus) {
+          postData.collectionNum++;
+          postData.collectionStatus = true;
+        } else {
+          postData.collectionNum--;
+          postData.collectionStatus = false;
+        }
+        break;
+      case 'up':
+        if (!postData.upStatus) {
+          postData.upNum++;
+          postData.upStatus = true;
+        } else {
+          postData.upNum--;
+          postData.upStatus = false;
+        }
+        break;
+      default:
+        break;
+    }
+    allPostData[itemData.index] = postData;
+    this.execSetStorageSync(allPostData);
+    return postData;
+  }
+  //实现点赞功能
+
+
+
 };
 
 export {

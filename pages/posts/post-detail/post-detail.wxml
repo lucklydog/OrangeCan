@@ -1,13 +1,32 @@
 <!--pages/posts/post-detail/post-detail.wxml-->
 <view class="container">
-  <image class = "head-image" src='{{post.postImg}}'></image>
+  <image class="head-image" src='{{post.postImg}}'></image>
   <text class="title">{{post.title}}</text>
-  <view class= "author-data">
+  <view class="author-data">
     <view class="author-box">
-      <image class="avatar"src='{{post.avatar}}'></image>
+      <image class="avatar" src='{{post.avatar}}'></image>
       <text class="author">{{post.author}}</text>
     </view>
     <text class="data">{{post.dataTime}}</text>
   </view>
   <text class="detail">{{post.detail}}</text>
+</view>
+
+
+<view class="tool">
+  <view class="tool-item" catchtap="onUpTap" data-post-id="{{post.postId}}">
+    <image wx:if="{{post.upStatus}}" src='/images/icon/wx_app_liked.png' />
+    <image wx:else src='/images/icon/wx_app_like.png' />
+    <text>{{post.upNum}}</text>
+  </view>
+  <view class="tool-item" catchtap="onCommentTap" data-post-id="{{post.postId}}">
+    <image src='/images/icon/wx_app_message.png'></image>
+    <text>{{post.commentNum}}</text>
+  </view>
+  <view class="tool-item" catchtap="onCollectionTap" data-post-id="post.postId">
+    <image wx:if="{{post.collectionStatus}}" src='/images/icon/wx_app_collected.png' />
+    <image wx:else src='/images/icon/wx_app_collect.png' />
+    <text>{{post.collectionNum}}</text>
+  </view>
+
 </view>
