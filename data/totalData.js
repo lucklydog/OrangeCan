@@ -52,7 +52,7 @@ var postList = [{
       create_time: '1484723344',
       content: {
         txt: ' 那一年的毕业季，我们挥挥手，来不及说再见，就踏上了远行的火车。',
-        img: ["/images/comment/train-1.jpg", "/images/comment/train-2.jpg", "/images/comment/train-3.jpg"],
+        img: ["https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/06/02/ChMkJ1er2DeIeT0GAA4rQicxHXQAAUVvAI7ObsADita649.jpg", "https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/06/02/ChMkJ1er2DeIeT0GAA4rQicxHXQAAUVvAI7ObsADita649.jpg", "https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/06/02/ChMkJ1er2DeIeT0GAA4rQicxHXQAAUVvAI7ObsADita649.jpg"],
         audio: null
       }
     }, {
