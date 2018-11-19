@@ -40,26 +40,25 @@ class DBPost {
     var itemData = this.getPostItemById().data;
     //按时间降序排序评论
     itemData.comments.sort(this.compareWithTime);
-    var len = itemData.comments.length,comment;
-    for(var i = 0;i<len;i++){
+    var len = itemData.comments.length,
+      comment;
+    for (var i = 0; i < len; i++) {
       //将comment中的时间戳转化成而阅读格式
-      comment=itemData.comments[i];
-      comment.create_time = util.getDiffTime(comment.create_time,true);
+      comment = itemData.comments[i];
+      comment.create_time = util.getDiffTime(comment.create_time, true);
     }
     return itemData.comments;
   }
 
 
   //比较时间函数
-  compareWithTime(value1,value2){
-    var flag =parseFloat(value1.create_time)-parseFloat(value2.create_time);
-    if(flag<0){
+  compareWithTime(value1, value2) {
+    var flag = parseFloat(value1.create_time) - parseFloat(value2.create_time);
+    if (flag < 0) {
       return 1;
-    }
-    else if(flag>0){
+    } else if (flag > 0) {
       return -1;
-    }
-    else{
+    } else {
       return 0;
     }
   }
@@ -76,7 +75,7 @@ class DBPost {
     var data = this.updatePostData('up');
     return data;
   }
-  updatePostData(category) {
+  updatePostData(category, newComment) {
     var itemData = this.getPostItemById(),
       postData = itemData.data,
       allPostData = this.getAllPostData();
@@ -99,6 +98,10 @@ class DBPost {
           postData.upStatus = false;
         }
         break;
+      case 'comment':
+        postData.comments.push(newComment);
+        postData.commentNum++;
+        break;
       default:
         break;
     }
@@ -106,6 +109,13 @@ class DBPost {
     this.execSetStorageSync(allPostData);
     return postData;
   }
+
+  //发表评论
+  newComment(newComment) {
+    this.updatePostData('comment', newComment);
+  }
+
+
 };
 
 export {
