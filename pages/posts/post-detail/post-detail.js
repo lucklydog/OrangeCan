@@ -21,6 +21,7 @@ Page({
     this.setData({
       post: this.postData
     })
+    this.addReadingTimes();
   },
 
   /**
@@ -108,5 +109,7 @@ Page({
       url: '../post-comment/post-comment?id=' + id
     })
   },
-
+  addReadingTimes:function(){
+    this.dbPost.addReadingTimes();
+  }
 })
