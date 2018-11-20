@@ -23,6 +23,9 @@ App({
       wx.clearStorageSync();//先清除所有缓存数据
       wx.setStorageSync('postList', dataObj.postList);//重新读取设置初始化数据
     }
-    
+  },
+  globalData:{
+    g_isPlayingMusic:false,
+    g_currentMusicPostId:null
   }
 })
