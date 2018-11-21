@@ -27,6 +27,18 @@ Page({
     this.addReadingTimes();
     this.setMusicMonitor();
     this.initMusicStatus();
+    this.setAniation();
+  },
+  //创建一个动画
+  setAniation:function(){
+    var animationUp = wx.createAnimation({
+      timingFunction:'ease-in-out'
+    })
+    this.animationUp = animationUp
+  },
+//增加阅读数
+  addReadingTimes: function () {
+    this.dbPost.addReadingTimes();
   },
   //当音乐播放停止时，图片变化
   setMusicMonitor: function() {
@@ -122,7 +134,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return{
+      title:this.postData.title,
+      desc:this.postData.content,
+      path:"/pages/posts/post-detail/post-detail"
+    }
   },
   //点击收藏文章按钮
   onCollectionTap: function(event) {
@@ -145,13 +161,25 @@ Page({
     this.setData({
       'post.upStatus': newData.upStatus,
       'post.upNum': newData.upNum
-    })
+    });
+    //动画调用函数
+    this.animationUp.scale(2).step();
+    this.setData({
+      animationUp:this.animationUp.export()
+    });
+    setTimeout(function(){
+      this.animationUp.scale(1).step();
+      this.setData({
+        animationUp:this.animationUp.export()
+      })
+    }.bind(this),300);
+
     wx.showToast({
       title: newData.upStatus ? "點贊成功" : "取消成功",
       duration: 1000,
       icon: "success",
       mask: false
-    })
+    });
   },
   onCommentTap: function(event) {
     var id = event.currentTarget.dataset.postId;
@@ -159,9 +187,7 @@ Page({
       url: '../post-comment/post-comment?id=' + id
     })
   },
-  addReadingTimes: function() {
-    this.dbPost.addReadingTimes();
-  },
+  
   //切换音乐
   onMusicTap: function(event) {
     if (this.data.isPlayingMusic) {

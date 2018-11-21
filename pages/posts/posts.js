@@ -11,7 +11,14 @@ Page({
     var postId = event.currentTarget.dataset.postId;
     console.log(postId);
     wx.navigateTo({
-      url: 'post-detail/post-detail?id='+postId,
+      url: 'post-detail/post-detail?id=' + postId
+    })
+  },
+
+  onSwiperTap: function(event) {
+    var postId = event.target.dataset.postId;
+    wx.navigateTo({
+      url: "post-detail/post-detail?id=" + postId
     })
   },
   /**
