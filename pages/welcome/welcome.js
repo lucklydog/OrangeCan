@@ -4,7 +4,7 @@ Page({
      * navigateTo 保留当前页面
      * switchTo 只能用于跳转到带tabbar的页面
      */
-      wx.navigateTo({
+      wx.switchTab({
         url:"../posts/posts",
         success:function(){
           console.log("jump success")
