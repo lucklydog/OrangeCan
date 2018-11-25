@@ -27,6 +27,6 @@ App({
   globalData:{
     g_isPlayingMusic:false,
     g_currentMusicPostId:null,
-    doubanBase:"http://t.yushu.im"
+    doubanBase:"http://t.yushu.im"//修改书上的域名地址，原来的地址无法访问
   }
 })

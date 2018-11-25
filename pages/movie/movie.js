@@ -9,7 +9,10 @@ Page({
   data: {
     inTheaters: {},
     comingSoon: {},
-    top250: {}
+    top250: {},
+    containerShow:true,
+    searchPanelShow:false,
+    searchResult:{}
   },
 
   /**
@@ -115,5 +118,40 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+
+  //处理点击事件
+  onMoreTap:function(event){
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'more-movie/more-movie?category='+category,
+    })
+  },
+
+  onBindFocus:function(event){
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true
+    })
+  },
+  onCancelImgTap:function(event){
+    this.setData({
+      containerShow:true,
+      searchPanelShow:false,
+      searchResult:{},
+      inputValue:""
+    })
+  },
+  onBindConfirm:function(event){
+    var keyWord = event.detail.value;//获取输入文字
+    var searchUrl  = app.globalData.doubanBase+"/v2/movie/search?q="+keyWord;
+    this.getMoviedListData(searchUrl,"searchResult","");
+  },
+
+  onMovieTap:function(event){
+    var movieId = event.currentTarget.dataset.movieId;
+    wx.navigateTo({
+      url:"movie-detail/movie-detail?id="+movieId
+    })
   }
 })

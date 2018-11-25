@@ -1,3 +1,43 @@
+//将数组转化为以“/”分隔的字符串
+function convertToCastString(casts){
+  var castsjoin="";
+  for(var idx in casts){
+    castsjoin = castsjoin+casts[idx].name+"/";
+  }
+  return castsjoin.substring(0,castsjoin.length-2);
+}
+//
+function convertToCastInfos(casts){
+  var castsArray = []
+  for(var idx in casts){
+    var cast = {
+      img : casts[idx].avatar?casts[idx].avatars.large:"",
+      name :casts[idx].name
+    }
+    castsArray.push(cast);
+  }
+  return castsArray;
+}
+//编写http方法
+function http(url,callBack){
+  wx.request({
+    url:url,
+    method:'GET',
+    header:{
+      "content-type":"json"
+    },
+    success:function(res){
+      callBack(res.data);
+    },
+    fail:function(error){
+      console.log(error)
+    },
+    complete:function(){
+      wx.hideNavigationBarLoading();
+    }
+  })
+}
+
 /**评分的格式转化函数 */
 //将50、35、00d等形式转化为【1,1,1,1,1】的形式
 function convertTostarsArray(Stars) {
@@ -106,5 +146,8 @@ function getDiffTime(recordTime, yearsFlag) {
 
 module.exports = {
   getDiffTime: getDiffTime,
-  convertTostarsArray:convertTostarsArray
+  convertTostarsArray:convertTostarsArray,
+  http:http,
+  convertToCastString:convertToCastString,
+  convertToCastInfos:convertToCastInfos
 }
