@@ -49,7 +49,7 @@
     <scroll-view class='cast-imgs' scroll-x="true" style="width:100%">
       <block wx:for="{{movie.castsInfo}}" wx:for-item="item">
         <view class="cast-container">
-          <image class='cast-img' src='{{item.img}}' />
+          <image class='cast-img' src="{{item.img}}" />
           <text class='cast-name'>{{item.name}}</text>
         </view>
       </block>

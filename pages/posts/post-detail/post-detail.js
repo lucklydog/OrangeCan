@@ -4,7 +4,7 @@ import {
 } from '../../../db/DBPost.js'; //利用ES6版本,必须用相对路径才可以显示内容
 
 var app = getApp();
-console.log(app)
+//console.log(app)
 Page({
 
   /**

@@ -6,16 +6,15 @@
     "pages/posts/post-comment/post-comment",
     "pages/movie/movie",
     "pages/movie/more-movie/more-movie",
-    "pages/movie/movie-detail/movie-detail"
+    "pages/movie/movie-detail/movie-detail",
+    "pages/setting/setting",
+    "pages/setting/device/device",
+    "pages/setting/documents/download/download"
   ],
-
-  
   "window": {
     "navigationBarBackgroundColor": "#4A6141",
     "backgroundColor": "#ECC0A8"
   },
-
-  
   "tabBar": {
     "borderStyle": "white",
     "selectedColor": "#4A6141",
@@ -34,15 +33,19 @@
         "text": "movie",
         "iconPath": "images/icon/wx_app_movie.png",
         "selectedIconPath": "images/icon/wx_app_movie@HL.png"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "setting",
+        "iconPath": "images/icon/wx_app_setting.png",
+        "selectedIconPath": "images/icon/wx_app_setting@HL.png"
       }
     ]
   },
-
-  "networkTimeout":{
-    "request":20000,
-    "connectSocket":20000,
-    "uploadFile":20000,
-    "downloadFile":20000
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
   }
-
 }
