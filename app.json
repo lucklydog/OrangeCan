@@ -15,7 +15,8 @@
     "pages/setting/open-api/decrypted/decrypted",
     "pages/setting/open-api/tpl-message/tpl-message",
     "pages/setting/open-api/wx-pay/wx-pay",
-    "pages/setting/others/wx-key/wx-key"
+    "pages/setting/others/wx-key/wx-key",
+    "pages/setting/others/scroll-view/scroll-view"
   ],
   "window": {
     "navigationBarBackgroundColor": "#4A6141",

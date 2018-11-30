@@ -1,6 +1,6 @@
 <!--pages/setting/others/wx-key/wx-key.wxml-->
-<switch wx:for="{{objectArray}}" style='display:block;'>{{item.id}}</switch>
+<switch wx:for="{{objectArray}}" wx:key="unique"style='display:block;'>{{item.id}}</switch>
 <button bindtap='switch'> Switch</button>
 <button bindtap='addToFront'>Add to the front</button>
-<switch wx:for="{{unmberArray}}" wx:key="*this" style='display:block;'>{{item}}</switch>
+<switch wx:for="{{numberArray}}" wx:key="*this" style='display:block;'>{{item}}</switch><!--针对数字或者字符可以使用*this-->
 <button bindtap='addNumberToFront'> add to the front</button>

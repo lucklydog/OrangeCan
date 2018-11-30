@@ -395,5 +395,10 @@ Page({
     wx.navigateTo({
       url:'/pages/setting/others/wx-key/wx-key'
     })
+  },
+  showScrollViewDemo:function(){
+    wx.navigateTo({
+      url:"/pages/setting/others/scroll-view/scroll-view"
+    })
   }
 })
