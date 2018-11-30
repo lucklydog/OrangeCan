@@ -1,0 +1,2 @@
+<!--pages/setting/open-api/check/check.wxml-->
+<button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onTap">获取用户信息</button>

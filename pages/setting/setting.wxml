@@ -18,7 +18,7 @@
 
   <!--缓存页面 -->
   <view class='category-item'>
-    <block wx:for="{{cache}}">
+    <block wx:for="{{cache}}" wx:key="*this">
       <view class='detail-item' catchtap='{{item.tap}}'>
         <image src='{{item.iconurl}}'></image>
         <text>{{item.title}}</text>
@@ -29,7 +29,7 @@
 
   <!--设置面板-->
   <view class='category-item'>
-    <block wx:for="{{device}}">
+    <block wx:for="{{device}}" wx:key="{{item.id}}">
       <view class='detail-item' catchtap='{{item.tap}}'>
         <image src='{{item.iconurl}}'></image>
         <text>{{item.title}}</text>
@@ -40,7 +40,7 @@
 
   <!--API 面板-->
   <view class='category-item'>
-    <block wx:for="{{api}}">
+    <block wx:for="{{api}}"wx:key='*this'>
       <view class='detail-item' catchtap='{{item.tap}}'>
         <image src='{{item.iconurl}}'></image>
         <text>{{item.title}}</text>
@@ -52,7 +52,7 @@
 
   <!--other其他杂项-->
   <view class='category-item'>
-    <block wx:for="{{others}}">
+    <block wx:for="{{others}}" wx:key='*this'>
       <view class='detail-item' catchtap='{{item.tap}}'>
         <image src='{{item.iconurl}}' />
         <text>{{item.title}}</text>
